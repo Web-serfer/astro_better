@@ -1,0 +1,32 @@
+{
+  "name": "astro_better",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --port 3000",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.1.5",
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.9.0",
+    "astro-icon": "^1.1.5",
+    "axios": "^1.9.0",
+    "better-auth": "^1.2.8",
+    "nodemailer": "^7.0.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "tailwindcss": "^4.1.8"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.9.0",
+    "@types/nodemailer": "^6.4.17",
+    "prisma": "^6.9.0"
+  }
+}

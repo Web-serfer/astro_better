@@ -1,0 +1,27 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+// --- НАЧАЛО БЛОКА ОТЛАДКИ ---
+console.log("--- dashboard.astro page is rendering ---");
+console.log("Astro.locals on dashboard:", Astro.locals);
+// --- КОНЕЦ БЛОКА ОТЛАДКИ ---
+
+const { session } = Astro.locals;
+
+if (!session) {
+  // Этот редирект вызывает цикл
+  console.log("❌ No session on dashboard page. Redirecting to /sign-in...");
+  return Astro.redirect("/sign-in");
+}
+const { user } = Astro.locals;
+---
+
+<Layout>
+  <div
+    class="min-h-screen flex flex-col items-center justify-center bg-gray-50"
+  >
+    <div class="max-w-md w-full text-center">
+      <h1 class="text-3xl font-bold text-gray-900 mb-6">Dashboard page</h1>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,8 @@
+---
+import SignInForm from "@components/auth/SignInForm";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Вход в систему">
+  <SignInForm dashboardPath="/dashboard" client:load />
+</Layout>

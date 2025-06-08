@@ -1,0 +1,10 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ForgotPasswordFlow from "../../components/auth//ForgotPasswordFlow";
+---
+
+<Layout title="Восстановление аккаунта">
+  <main class="flex flex-col items-center justify-center min-h-[80vh] p-5">
+    <ForgotPasswordFlow client:load />
+  </main>
+</Layout>
