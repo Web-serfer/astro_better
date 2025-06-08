@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios"; 
+import axios from "axios";
 
-/
 interface User {
   id: string;
   name: string | null;
@@ -11,7 +10,7 @@ interface User {
 }
 
 interface Session {
-  id:string;
+  id: string;
   expiresAt: string;
   userId: string;
 }
@@ -23,7 +22,7 @@ interface SessionData {
 
 export function useSession() {
   const [data, setData] = useState<SessionData | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);  
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -32,25 +31,22 @@ export function useSession() {
       setIsLoading(true);
 
       try {
-        
-        const response = await axios.get<SessionData>("/api/auth/get-session");        
-        
-        setData(response.data);
+        const response = await axios.get<SessionData>("/api/auth/get-session");
 
-      } catch (err: unknown) { 
-        if (axios.isAxiosError(err)) {         
+        setData(response.data);
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
           if (err.response?.status === 401 || err.response?.status === 404) {
-            setData(null); 
+            setData(null);
           } else {
-            
             console.error("Ошибка при получении сессии (сервер):", err);
             setError(new Error(err.response?.data?.message || err.message));
           }
-        } else if (err instanceof Error) {            
-            console.error("Ошибка при получении сессии (клиент):", err);
-            setError(err);
-        } else {            
-            setError(new Error("Произошла неизвестная ошибка"));
+        } else if (err instanceof Error) {
+          console.error("Ошибка при получении сессии (клиент):", err);
+          setError(err);
+        } else {
+          setError(new Error("Произошла неизвестная ошибка"));
         }
       } finally {
         setIsLoading(false);
