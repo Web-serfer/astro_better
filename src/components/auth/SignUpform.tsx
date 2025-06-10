@@ -91,17 +91,8 @@ export default function SignUpForm() {
         terms: termsAccepted,
       });
 
-      setIsSuccess(true);
+      setIsSuccess(true);      
 
-      // Сбрасываем данные формы до начального состояния
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-      // Сбрасываем чекбокс
-      setTermsAccepted(false);
     } catch (error) {
       let errorMessage: FormErrors = {
         general: "Ошибка сети. Попробуйте снова.",
