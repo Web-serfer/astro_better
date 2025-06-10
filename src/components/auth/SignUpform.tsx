@@ -145,7 +145,7 @@ export default function SignUpForm() {
                   {errors.general}
                 </div>
               )}
-              {/* ИЗМЕНЕНИЕ ЗДЕСЬ: space-y-2 стал space-y-4 */}
+
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 <div>
                   <label
