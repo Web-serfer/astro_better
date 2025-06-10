@@ -77,6 +77,7 @@ export default function SignUpForm() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // обработчик формы
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validateForm()) return;
@@ -91,6 +92,16 @@ export default function SignUpForm() {
       });
 
       setIsSuccess(true);
+
+      // Сбрасываем данные формы до начального состояния
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      // Сбрасываем чекбокс
+      setTermsAccepted(false);
     } catch (error) {
       let errorMessage: FormErrors = {
         general: "Ошибка сети. Попробуйте снова.",
@@ -134,7 +145,8 @@ export default function SignUpForm() {
                   {errors.general}
                 </div>
               )}
-              <form onSubmit={handleSubmit} className="space-y-2" noValidate>
+              {/* ИЗМЕНЕНИЕ ЗДЕСЬ: space-y-2 стал space-y-4 */}
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 <div>
                   <label
                     htmlFor="name"
@@ -266,7 +278,7 @@ export default function SignUpForm() {
                   )}
                 </div>
 
-                <div className="flex items-center pt-2">
+                <div className="flex items-center">
                   <input
                     id="terms"
                     name="terms"
@@ -291,23 +303,25 @@ export default function SignUpForm() {
                   </label>
                 </div>
                 {errors.terms && (
-                  <p className="text-red-600 text-sm">{errors.terms}</p>
+                  <p className="text-red-600 text-sm -mt-2">{errors.terms}</p>
                 )}
 
-                <button
-                  type="submit"
-                  className="w-full py-2 px-4 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-70 hover:cursor-pointer"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <span className="flex items-center justify-center">
-                      <ImSpinner8 className="animate-spin mr-2" />
-                      Регистрация...
-                    </span>
-                  ) : (
-                    "Зарегистрироваться"
-                  )}
-                </button>
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-70 disabled:cursor-not-allowed"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <span className="flex items-center justify-center">
+                        <ImSpinner8 className="animate-spin mr-2" />
+                        Регистрация...
+                      </span>
+                    ) : (
+                      "Зарегистрироваться"
+                    )}
+                  </button>
+                </div>
               </form>
 
               <div className="mt-6 text-center text-sm">
