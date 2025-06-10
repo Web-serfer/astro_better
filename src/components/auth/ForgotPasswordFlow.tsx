@@ -233,7 +233,7 @@ export default function ForgotPasswordFlow() {
   return (
     <div className="bg-white p-10 rounded-lg shadow-md max-w-md w-full text-center">
       <h2 className="text-2xl mb-5 text-gray-800 font-bold">
-        {showResetForm ? "Сбросьте ваш пароль" : "Найдите ваш аккаунт"}
+        {showResetForm ? "Сбросьте ваш пароль" : "Поиск аккаунта"}
       </h2>
 
       {showResetForm ? (
@@ -257,7 +257,7 @@ export default function ForgotPasswordFlow() {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="vash@email.com"
+                placeholder="your@email.com"
                 required
                 className="w-full p-3 border border-gray-300 rounded-md text-base"
               />
